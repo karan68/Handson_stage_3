@@ -1,0 +1,276 @@
+handson 1:
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution {
+
+    // Complete the reverseArray function below.
+    static int[] reverseArray(int[] a) {
+         Array.Reverse(a);
+         return a;
+
+    }
+
+    static void Main(string[] args) {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        int arrCount = Convert.ToInt32(Console.ReadLine());
+
+        int[] arr = Array.ConvertAll(Console.ReadLine().Split(' '), arrTemp => Convert.ToInt32(arrTemp))
+        ;
+        int[] res = reverseArray(arr);
+
+        textWriter.WriteLine(string.Join(" ", res));
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------
+2) Handson 2:
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution {
+
+   
+    static void Main(string[] args) {
+    
+   int[][] arr = new int[6][];
+
+        for (int i = 0; i < 6; i++) {
+            arr[i] = Array.ConvertAll(Console.ReadLine().Split(' '), arrTemp => Convert.ToInt32(arrTemp));
+        }
+
+      
+
+    int row, col;
+    int sum=0;
+    int best_sum=0;
+    int first_flag=1;
+   
+    for(row=0; row<=3; row++){
+        for(col=0; col<=3; col++){
+            sum = arr[row][col] + arr[row][col+1] + arr[row][col+2] + arr[row+1][col+1] + arr[row+2][col] + arr[row+2][col+1] + arr[row+2][col+2];
+            if(first_flag==1){
+                first_flag=0;
+                best_sum=sum;
+            }
+            else if(sum>best_sum)
+                best_sum=sum;
+        }
+    }
+    
+    Console.Write(best_sum); 
+    
+
+
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+3) Handson3:
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        
+
+        string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
+
+        int n = Convert.ToInt32(firstMultipleInput[0]);
+
+        int d = Convert.ToInt32(firstMultipleInput[1]);
+
+        List<int> arr = Console.ReadLine().TrimEnd().Split(' ').ToList().Select(arrTemp => Convert.ToInt32(arrTemp)).ToList();
+
+      int[] arr1 = new int[d]; //declaring array with size d
+     int[] arr2 = new int[n-d]; //declaring array with size n-d
+     
+     
+     arr.CopyTo(0, arr1, 0, d); //copying the list arr to array arr1 using copyTo
+     arr.CopyTo(d, arr2, 0, n-d); //copying the list arr to array arr2 using copyTo
+     
+    var myList = new List<int>(); 
+      myList.AddRange(arr2); //adding those arrays to new list
+      myList.AddRange(arr1);
+      
+      
+      foreach (int res in myList) {
+         Console.Write(res + " ");
+      }
+}
+}
+--------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+4) Handson 4 :
+
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution {
+
+    static int search(String[]arr, String s)
+    {
+            int counter = 0;
+            for (int j = 0; j < arr.Length; j++)
+ 
+                /* checking if string given in query is
+                present in the given string. If present,
+                increase times*/
+                if (s.Equals(arr[j]))
+                    counter++;
+ 
+        return counter;
+    }
+    static void Main(string[] args) {
+        
+
+        int stringsCount = Convert.ToInt32(Console.ReadLine());
+
+        string[] strings = new string [stringsCount];
+
+        for (int i = 0; i < stringsCount; i++) {
+            string stringsItem = Console.ReadLine();
+            strings[i] = stringsItem;
+        }
+
+        int queriesCount = Convert.ToInt32(Console.ReadLine());
+
+        string[] queries = new string [queriesCount];
+
+        for (int i = 0; i < queriesCount; i++) {
+            string queriesItem = Console.ReadLine();
+            queries[i] = queriesItem;
+        }
+
+       for (int i = 0; i < queries.Length; i++)
+            Console.WriteLine(search(strings, queries[i]) + " ");
+   
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+5) Handson 5:
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
+
+class Solution {
+
+    // Complete the arrayManipulation function below.
+    static long arrayManipulation(int n, int[][] queries) {
+          long[] computation = new long[n];
+
+    for (int i = 0; i < queries.Length; i++) {
+      int a = queries[i][0] - 1;
+      int b = queries[i][1] - 1;
+      int k = queries[i][2];
+
+      computation[a] += k;
+      if (b + 1 < n ) {
+        computation[b + 1] -= k;
+      }
+    }
+
+    long max = 0; long sum = 0;
+    for (int i = 0; i < n; i++) {
+      sum += computation[i];
+      max = Math.Max(max, sum);
+    }
+
+    return max;
+
+    }
+
+    static void Main(string[] args) {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        string[] nm = Console.ReadLine().Split(' ');
+
+        int n = Convert.ToInt32(nm[0]);
+
+        int m = Convert.ToInt32(nm[1]);
+
+        int[][] queries = new int[m][];
+
+        for (int i = 0; i < m; i++) {
+            queries[i] = Array.ConvertAll(Console.ReadLine().Split(' '), queriesTemp => Convert.ToInt32(queriesTemp));
+        }
+
+        long result = arrayManipulation(n, queries);
+
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
+    }
+}
